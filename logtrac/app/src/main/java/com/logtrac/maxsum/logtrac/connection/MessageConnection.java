@@ -6,6 +6,7 @@ import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -21,7 +22,7 @@ import java.io.InputStream;
  */
 
 public class MessageConnection {
-    private String messageUrl="https://track.primeforcindo.com/api/message?";
+    private String messageUrl="https://track.primeforcindo.com/api/message";
     public static String MessageMESSAGE="";
     public static boolean ISMessageFINISHED=false;
 
@@ -55,6 +56,8 @@ public class MessageConnection {
         String result = "";
         try {
             HttpClient httpclient = new DefaultHttpClient();
+            //HttpGet httpGet = new HttpGet(messageUrl+"?"+"session_id="+sid);
+            //HttpResponse httpResponse = httpclient.execute(httpGet);
             HttpPost httpPost = new HttpPost(messageUrl+"session_id="+sid);
             HttpResponse httpResponse = httpclient.execute(httpPost);
             HttpEntity entity = httpResponse.getEntity();

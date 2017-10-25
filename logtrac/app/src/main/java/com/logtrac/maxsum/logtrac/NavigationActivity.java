@@ -85,7 +85,7 @@ public class NavigationActivity extends FragmentActivity implements OnMapReadyCa
                     new LatLng(Math.max(start.latitude,end.latitude),Math.max(start.longitude,end.longitude)));
 
             mMap.setLatLngBoundsForCameraTarget(areaBound);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(areaBound.getCenter(), 7));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(areaBound.getCenter(), 6));
 
 
         }catch (Exception e) {

@@ -21,14 +21,16 @@ import java.io.InputStream;
  */
 
 public class CallmeConnection {
-    private String CallmeUrl="https://track.primeforcindo.com/api/callme?";
+    private String CallmeUrl="https://track.primeforcindo.com/api/callme";
     public static String CallmeMESSAGE="";
     public static boolean ISCallmeFINISHED=false;
 
+    private String travel_id;
     private String session_id;
 
-    public CallmeConnection(String sesid) {
-        this.session_id=sesid;
+    public CallmeConnection(String tid, String sid) {
+        this.travel_id=tid;
+        this.session_id=sid;
     }
 
 
@@ -43,7 +45,7 @@ public class CallmeConnection {
         @Override
         protected String doInBackground(String... urls) {
             urls.getClass();
-            return postCallmeData(session_id);
+            return postCallmeData(travel_id,session_id);
         }
         @Override
         protected void onPostExecute(String result) {
@@ -51,14 +53,16 @@ public class CallmeConnection {
         }
     }
 
-    private String postCallmeData(String sid){
+    private String postCallmeData(String t_id, String s_id){
         InputStream inputStream = null;
         String result = "";
         try {
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(CallmeUrl+"session_id="+sid);
+            //HttpPost httpPost = new HttpPost(CallmeUrl+"session_id="+sid);
+            HttpPost httpPost = new HttpPost(CallmeUrl+"/"+t_id+"/create?session_id="+s_id);
             HttpResponse httpResponse = httpclient.execute(httpPost);
             HttpEntity entity = httpResponse.getEntity();
+            Log.d("Call Me ","url : "+CallmeUrl+"/"+t_id+"/create?session_id="+s_id);
             if(entity != null) {
                 result = EntityUtils.toString(entity);
             }

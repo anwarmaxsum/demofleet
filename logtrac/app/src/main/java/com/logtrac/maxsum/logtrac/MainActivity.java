@@ -139,16 +139,17 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.show();
                     break;
                 case 3:
-                    CallmeConnection callme = new CallmeConnection(pref.getString("session_id", null));
-                    callme.Callme();
-                    while(!CallmeConnection.ISCallmeFINISHED){}
-                    if (CallmeConnection.CallmeMESSAGE.contains("error")) {
-                        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this, "Your request was sent to center", Toast.LENGTH_LONG).show();
-                    }
-                    CallmeConnection.CallmeMESSAGE = "";
-                    CallmeConnection.ISCallmeFINISHED = false;
+                    Toast.makeText(this, "Call me must be accociated with particular travel", Toast.LENGTH_LONG).show();
+//                    CallmeConnection callme = new CallmeConnection(pref.getString("session_id", null));
+//                    callme.Callme();
+//                    while(!CallmeConnection.ISCallmeFINISHED){}
+//                    if (CallmeConnection.CallmeMESSAGE.contains("error")) {
+//                        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        Toast.makeText(this, "Your request was sent to center", Toast.LENGTH_LONG).show();
+//                    }
+//                    CallmeConnection.CallmeMESSAGE = "";
+//                    CallmeConnection.ISCallmeFINISHED = false;
                     break;
                 case 4:
                     try {
