@@ -6,6 +6,7 @@ import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -25,11 +26,9 @@ public class CallmeConnection {
     public static String CallmeMESSAGE="";
     public static boolean ISCallmeFINISHED=false;
 
-    private String travel_id;
     private String session_id;
 
-    public CallmeConnection(String tid, String sid) {
-        this.travel_id=tid;
+    public CallmeConnection(String sid) {
         this.session_id=sid;
     }
 
@@ -45,7 +44,7 @@ public class CallmeConnection {
         @Override
         protected String doInBackground(String... urls) {
             urls.getClass();
-            return postCallmeData(travel_id,session_id);
+            return postCallmeData(session_id);
         }
         @Override
         protected void onPostExecute(String result) {
@@ -53,16 +52,20 @@ public class CallmeConnection {
         }
     }
 
-    private String postCallmeData(String t_id, String s_id){
+    private String postCallmeData(String s_id){
         InputStream inputStream = null;
         String result = "";
         try {
             HttpClient httpclient = new DefaultHttpClient();
             //HttpPost httpPost = new HttpPost(CallmeUrl+"session_id="+sid);
-            HttpPost httpPost = new HttpPost(CallmeUrl+"/"+t_id+"/create?session_id="+s_id);
-            HttpResponse httpResponse = httpclient.execute(httpPost);
+            //HttpPost httpPost = new HttpPost(CallmeUrl+"?session_id="+s_id);
+            //HttpResponse httpResponse = httpclient.execute(httpPost);
+
+            HttpGet httpGet = new HttpGet(CallmeUrl+"?session_id="+s_id);
+            HttpResponse httpResponse = httpclient.execute(httpGet);
             HttpEntity entity = httpResponse.getEntity();
-            Log.d("Call Me ","url : "+CallmeUrl+"/"+t_id+"/create?session_id="+s_id);
+
+            Log.d("Call Me ","url : "+CallmeUrl+"?session_id="+s_id);
             if(entity != null) {
                 result = EntityUtils.toString(entity);
             }

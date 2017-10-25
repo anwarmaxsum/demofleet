@@ -139,17 +139,25 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.show();
                     break;
                 case 3:
-                    Toast.makeText(this, "Call me must be accociated with particular travel", Toast.LENGTH_LONG).show();
-//                    CallmeConnection callme = new CallmeConnection(pref.getString("session_id", null));
-//                    callme.Callme();
-//                    while(!CallmeConnection.ISCallmeFINISHED){}
-//                    if (CallmeConnection.CallmeMESSAGE.contains("error")) {
-//                        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        Toast.makeText(this, "Your request was sent to center", Toast.LENGTH_LONG).show();
-//                    }
-//                    CallmeConnection.CallmeMESSAGE = "";
-//                    CallmeConnection.ISCallmeFINISHED = false;
+                    pref = getApplicationContext().getSharedPreferences("SESSION", 0);
+                    CallmeConnection callme = new CallmeConnection(pref.getString("session_id",null));
+                    callme.Callme();
+
+                    while (!CallmeConnection.ISCallmeFINISHED) {}
+                    //Toast.makeText(ReserveActivity.this, CallmeConnection.CallmeMESSAGE, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "Call request ", Toast.LENGTH_LONG).show();
+                    if(CallmeConnection.CallmeMESSAGE.contains("error")) {
+                        Toast.makeText(this, "Connection error : "+CallmeConnection.CallmeMESSAGE, Toast.LENGTH_LONG).show();
+                        CallmeConnection.CallmeMESSAGE="";
+                        CallmeConnection.ISCallmeFINISHED=false;
+                    }
+                    else {
+                        Toast.makeText(this, "Request was sent to center : "+CallmeConnection.CallmeMESSAGE,
+                                Toast.LENGTH_LONG).show();
+                        CallmeConnection.CallmeMESSAGE="";
+                        CallmeConnection.ISCallmeFINISHED=false;
+
+                    }
                     break;
                 case 4:
                     try {

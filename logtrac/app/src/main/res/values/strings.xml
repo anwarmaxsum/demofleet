@@ -27,6 +27,7 @@
     <string name="title_activity_pickup_travel">Pick Up Travel</string>
     <string name="title_activity_reserve_travel">On Going Travel</string>
     <string name="title_activity_finish_travel">Finish Travel</string>
+    <string name="title_activity_message_list">MessageListActivity</string>
 
     <!--<string name="directionApiKey">AIzaSyDympA9UbMlGeLfXncw0HgmymAzNRQEldk</string>-->
 

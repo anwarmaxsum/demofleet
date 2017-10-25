@@ -35,9 +35,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:screenOrientation="landscape"
             android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,8 +68,8 @@
 
         <activity
             android:name=".NavigationActivity"
-            android:screenOrientation="landscape"
-            android:label="@string/title_activity_navigation" />
+            android:label="@string/title_activity_navigation"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".PickupTravelActivity"
             android:label="@string/title_activity_pickup_travel"
@@ -85,7 +85,10 @@
             android:label="@string/title_activity_finish_travel"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".MessageListActivity"
+            android:label="@string/title_activity_message_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
