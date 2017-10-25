@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Fleet Management</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="prompt_id">User ID</string>
+    <string name="action_log_in">Log in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_list_order">List Travel</string>
+    <string name="title_activity_navigation">Map</string>
+
+    <string name="directionsApiKey">AIzaSyDympA9UbMlGeLfXncw0HgmymAzNRQEldk</string>
+    <string name="title_activity_pickup_travel">Pick Up Travel</string>
+    <string name="title_activity_reserve_travel">On Going Travel</string>
+    <string name="title_activity_finish_travel">Finish Travel</string>
+
+    <!--<string name="directionApiKey">AIzaSyDympA9UbMlGeLfXncw0HgmymAzNRQEldk</string>-->
+
+</resources>
