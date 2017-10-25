@@ -115,28 +115,32 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case 2:
-                    MessageConnection Message = new MessageConnection(pref.getString("session_id", null));
-                    Message.Message();
-                    while(!MessageConnection.ISMessageFINISHED){}
-                    String ms;
-                    if (MessageConnection.MessageMESSAGE.contains("error") || MessageConnection.MessageMESSAGE.contains("Not Found")) {
-                        ms="No message for you";
-                    } else {
-                       ms=MessageConnection.MessageMESSAGE;
-                    }
-                    MessageConnection.MessageMESSAGE = "";
-                    MessageConnection.ISMessageFINISHED = false;
-
-                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    alertDialog.setTitle("Message:");
-                    alertDialog.setMessage(ms);
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+//                    MessageConnection Message = new MessageConnection(pref.getString("session_id", null));
+//                    Message.Message();
+//                    while(!MessageConnection.ISMessageFINISHED){}
+//                    String ms;
+//                    if (MessageConnection.MessageMESSAGE.contains("error") || MessageConnection.MessageMESSAGE.contains("Not Found")) {
+//                        ms="No message for you";
+//                    } else {
+//                       ms=MessageConnection.MessageMESSAGE;
+//                    }
+//                    MessageConnection.MessageMESSAGE = "";
+//                    MessageConnection.ISMessageFINISHED = false;
+//
+//                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+//                    alertDialog.setTitle("Message:");
+//                    alertDialog.setMessage(ms);
+//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                            new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            });
+//                    alertDialog.show();
+                    intent = new Intent(MainActivity.this, MessageListActivity.class);
+                    Log.d("Show Message: ", " View Message ");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                     break;
                 case 3:
                     pref = getApplicationContext().getSharedPreferences("SESSION", 0);

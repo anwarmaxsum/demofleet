@@ -131,17 +131,20 @@ public class ListTravelActivity extends ListActivity {
 
                     Log.d("### Read All travel : ", travel.date + ":" + travel.state + ":" + travel.id + ":" + travel.name);
                     Log.d("### Read All Array : ", travelNames[i] + ":" + travelDepartures[i] + ":" + travelArrivals[i]);
+
+                    RetrieveTravelConnection.GET_TRAVELS_MESSAGE = "";
+                    RetrieveTravelConnection.GET_TRAVELS_ISFINISHED = false;
+
+                    CustomListAdapter adapter = new CustomListAdapter(this, travelNames, travelDepartures, travelArrivals, travelStatus);
+                    travelList = (ListView) findViewById(android.R.id.list);
+                    travelList.setAdapter(adapter);
+
                 }
 
-                RetrieveTravelConnection.GET_TRAVELS_MESSAGE = "";
-                RetrieveTravelConnection.GET_TRAVELS_ISFINISHED = false;
 
-                CustomListAdapter adapter = new CustomListAdapter(this, travelNames, travelDepartures, travelArrivals, travelStatus);
-                travelList = (ListView) findViewById(android.R.id.list);
-                travelList.setAdapter(adapter);
 
             } catch (Exception e) {
-                Toast.makeText(this, "Error occures or You are not legitimate driver", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Error occures : You are not legitimate driver", Toast.LENGTH_LONG).show();
                 Log.d("Error : ", e.toString());
             }
         }

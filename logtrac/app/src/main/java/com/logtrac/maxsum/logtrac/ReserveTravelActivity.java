@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -199,28 +200,32 @@ public class ReserveTravelActivity extends AppCompatActivity {
 
 
     private void showMessage() {
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("SESSION", 0);
-        MessageConnection Message = new MessageConnection(pref.getString("session_id", null));
-        Message.Message();
-        while(!MessageConnection.ISMessageFINISHED){}
-        String ms;
-        if (MessageConnection.MessageMESSAGE.contains("error") || MessageConnection.MessageMESSAGE.contains("Not Found")) {
-            ms="No message for you";
-        } else {
-            ms=MessageConnection.MessageMESSAGE;
-        }
-        MessageConnection.MessageMESSAGE = "";
-        MessageConnection.ISMessageFINISHED = false;
-
-        AlertDialog alertDialog = new AlertDialog.Builder(ReserveTravelActivity.this).create();
-        alertDialog.setTitle("Message:");
-        alertDialog.setMessage(ms);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        Intent intent = new Intent(ReserveTravelActivity.this, MessageListActivity.class);
+        Log.d("Show Message: ", " View Message ");
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+//        SharedPreferences pref = getApplicationContext().getSharedPreferences("SESSION", 0);
+//        MessageConnection Message = new MessageConnection(pref.getString("session_id", null));
+//        Message.Message();
+//        while(!MessageConnection.ISMessageFINISHED){}
+//        String ms;
+//        if (MessageConnection.MessageMESSAGE.contains("error") || MessageConnection.MessageMESSAGE.contains("Not Found")) {
+//            ms="No message for you";
+//        } else {
+//            ms=MessageConnection.MessageMESSAGE;
+//        }
+//        MessageConnection.MessageMESSAGE = "";
+//        MessageConnection.ISMessageFINISHED = false;
+//
+//        AlertDialog alertDialog = new AlertDialog.Builder(ReserveTravelActivity.this).create();
+//        alertDialog.setTitle("Message:");
+//        alertDialog.setMessage(ms);
+//        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//        alertDialog.show();
     }
 }
